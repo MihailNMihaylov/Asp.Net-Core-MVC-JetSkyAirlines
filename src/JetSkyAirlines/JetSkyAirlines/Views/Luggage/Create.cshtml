@@ -1,0 +1,18 @@
+﻿@using JetSkyAirlines.Data.Models
+@model CreateLuggageViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<title>Create Luggage</title>
+<div class="row">
+    <h3>Create new Airport </h3>
+    <form asp-action="Create" asp-controller="Luggage" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label asp-for="Weight"></label>
+            <input asp-for="Weight" id="Weight" name="Weight" placeholder="Weight of luggage..." class="form-control" />
+            <input type="submit" class="btn btn-primary" value="Create Luggage" />
+        </div>
+    </form>
+</div>

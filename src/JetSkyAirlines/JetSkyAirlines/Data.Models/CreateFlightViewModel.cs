@@ -5,14 +5,12 @@ using System.Threading.Tasks;
 
 namespace JetSkyAirlines.Data.Models
 {
-    public class Flight
+    public class CreateFlightViewModel
     {
-        public int Id { get; set; }
-
         public int FromAirport { get; set; }
 
         public int ToAirport { get; set; }
 
-        public int Airplane { get; set; }
+        public int AirplaneId { get; set; }
     }
 }

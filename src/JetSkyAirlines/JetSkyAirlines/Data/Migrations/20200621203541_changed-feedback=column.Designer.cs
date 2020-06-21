@@ -4,14 +4,16 @@ using JetSkyAirlines.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JetSkyAirlines.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200621203541_changed-feedback=column")]
+    partial class changedfeedbackcolumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -181,16 +183,22 @@ namespace JetSkyAirlines.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Airplane")
+                    b.Property<int?>("AirplaneId")
                         .HasColumnType("int");
 
-                    b.Property<int>("FromAirport")
+                    b.Property<int?>("FromAirportId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ToAirport")
+                    b.Property<int?>("ToAirportId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AirplaneId");
+
+                    b.HasIndex("FromAirportId");
+
+                    b.HasIndex("ToAirportId");
 
                     b.ToTable("Flights");
                 });
@@ -368,6 +376,21 @@ namespace JetSkyAirlines.Data.Migrations
                         .HasForeignKey("FlightId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("JetSkyAirlines.Data.Models.Flight", b =>
+                {
+                    b.HasOne("JetSkyAirlines.Data.Models.Airplane", "Airplane")
+                        .WithMany()
+                        .HasForeignKey("AirplaneId");
+
+                    b.HasOne("JetSkyAirlines.Data.Models.Airport", "FromAirport")
+                        .WithMany()
+                        .HasForeignKey("FromAirportId");
+
+                    b.HasOne("JetSkyAirlines.Data.Models.Airport", "ToAirport")
+                        .WithMany()
+                        .HasForeignKey("ToAirportId");
                 });
 
             modelBuilder.Entity("JetSkyAirlines.Data.Models.Luggage", b =>

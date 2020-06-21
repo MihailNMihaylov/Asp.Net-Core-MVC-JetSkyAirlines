@@ -1,0 +1,20 @@
+﻿@using JetSkyAirlines.Data.Models
+@model CreateFeedbackViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<title>Create Feedback</title>
+<div class="row">
+    <h3>Create new Feedback </h3>
+    <form asp-action="Create" asp-controller="Feedback" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label asp-for="Content"></label>
+            <input asp-for="Content" id="Content" name="Content" placeholder="Feedback..." class="form-control" />
+            <label asp-for="FlightId"></label>
+            <input asp-for="FlightId" id="FlightId" name="FlightId" placeholder="FlightId..." class="form-control" />
+            <input type="submit" class="btn btn-primary" value="Create Feedback" />
+        </div>
+    </form>
+</div>

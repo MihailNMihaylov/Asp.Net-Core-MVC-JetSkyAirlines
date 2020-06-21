@@ -1,0 +1,22 @@
+﻿@using JetSkyAirlines.Data.Models
+@model CreateFlightViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<title>Create Flight</title>
+<div class="row">
+    <h3>Create new Flight </h3>
+    <form asp-action="Create" asp-controller="Flight" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label asp-for="FromAirport"></label>
+            <input asp-for="FromAirport" id="FromAirport" name="FromAirport" placeholder="From Airport..." class="form-control" />
+            <label asp-for="ToAirport"></label>
+            <input asp-for="ToAirport" id="ToAirport" name="ToAirport" placeholder="ToAirport..." class="form-control" />
+            <label asp-for="AirplaneId"></label>
+            <input asp-for="AirplaneId" id="AirplaneId" name="AirplaneId" placeholder="Airplane Id..." class="form-control" />
+            <input type="submit" class="btn btn-primary" value="Create Flight" />
+        </div>
+    </form>
+</div>

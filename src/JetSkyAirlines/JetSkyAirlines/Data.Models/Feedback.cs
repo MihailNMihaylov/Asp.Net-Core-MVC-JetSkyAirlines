@@ -11,7 +11,7 @@ namespace JetSkyAirlines.Data.Models
 
         public string Content { get; set; }
 
-        public int ApplicationUsedId { get; set; }
+        public string ApplicationUsedId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
         public int FlightId { get; set; }

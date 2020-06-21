@@ -39,6 +39,10 @@ namespace JetSkyAirlines
 
            // services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
             services.AddScoped<IAirplaneService, AirplaneService>();
+            services.AddScoped<IAirportService, AirportService>();
+            services.AddScoped<ILuggageService, LuggageService>();
+            services.AddScoped<IFeedbackService, FeedbackService>();
+            services.AddScoped<IFlightService, FlightService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

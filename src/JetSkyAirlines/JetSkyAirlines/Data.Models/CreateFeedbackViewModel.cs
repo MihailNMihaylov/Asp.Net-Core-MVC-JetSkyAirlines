@@ -5,13 +5,12 @@ using System.Threading.Tasks;
 
 namespace JetSkyAirlines.Data.Models
 {
-    public class Luggage
+    public class CreateFeedbackViewModel
     {
-        public int Id { get; set; }
-
-        public int Weights { get; set; }
+        public string Content { get; set; }
 
         public string ApplicationUserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+
+        public int FlightId { get; set; }
     }
 }
