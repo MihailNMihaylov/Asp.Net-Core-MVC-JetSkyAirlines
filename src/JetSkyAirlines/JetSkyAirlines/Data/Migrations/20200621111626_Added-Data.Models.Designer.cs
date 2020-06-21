@@ -4,14 +4,16 @@ using JetSkyAirlines.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JetSkyAirlines.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200621111626_Added-Data.Models")]
+    partial class AddedDataModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -181,10 +183,16 @@ namespace JetSkyAirlines.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AirplaneId")
+                    b.Property<int>("AirplaneId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("From")
                         .HasColumnType("int");
 
                     b.Property<int?>("FromAirportId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("To")
                         .HasColumnType("int");
 
                     b.Property<int?>("ToAirportId")
@@ -383,7 +391,9 @@ namespace JetSkyAirlines.Data.Migrations
                 {
                     b.HasOne("JetSkyAirlines.Data.Models.Airplane", "Airplane")
                         .WithMany()
-                        .HasForeignKey("AirplaneId");
+                        .HasForeignKey("AirplaneId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("JetSkyAirlines.Data.Models.Airport", "FromAirport")
                         .WithMany()
