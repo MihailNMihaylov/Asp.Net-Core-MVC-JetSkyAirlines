@@ -2,23 +2,59 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center" style="margin-bottom: 5px">
+    <h2 class="display-4">Welcome, fly with us now !</h2>
+    <button type="button" style="margin-bottom: 19px" class="btn bg-success btn-primary btn-lg">Book a Ticket!</button>
 </div>
 
-<div class="card-body text-center">
-    <a asp-controller="Airplane" asp-action="Create" type="button" class="btn btn-success btn-lg text-center">Add Airplane</a>
-</div>
-<div class="card-body text-center">
-    <a asp-controller="Airport" asp-action="Create" type="button" class="btn btn-success btn-lg text-center">Add Airport</a>
-</div>
-<div class="card-body text-center">
-    <a asp-controller="Luggage" asp-action="Create" type="button" class="btn btn-success btn-lg text-center">Add Luggage</a>
-</div>
-<div class="card-body text-center">
-    <a asp-controller="Feedback" asp-action="Create" type="button" class="btn btn-success btn-lg text-center">Add Feedback</a>
-</div>
-<div class="card-body text-center">
-    <a asp-controller="Flight" asp-action="Create" type="button" class="btn btn-success btn-lg text-center">Add Flight</a>
-</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="card-body text-center">
+        <a asp-controller="Airplane" asp-action="Create" type="button" class="btn btn-success btn-lg text-center">Add Airplane</a>
+    </div>
+    <div class="card-body text-center">
+        <a asp-controller="Airport" asp-action="Create" type="button" class="btn btn-success btn-lg text-center">Add Airport</a>
+    </div>
+    <div class="card-body text-center">
+        <a asp-controller="Luggage" asp-action="Create" type="button" class="btn btn-success btn-lg text-center">Add Luggage</a>
+    </div>
+    <div class="card-body text-center">
+        <a asp-controller="Feedback" asp-action="Create" type="button" class="btn btn-success btn-lg text-center">Add Feedback</a>
+    </div>
+    <div class="card-body text-center">
+        <a asp-controller="Flight" asp-action="Create" type="button" class="btn btn-success btn-lg text-center">Add Flight</a>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="card" style="width:300px; margin-right: 15px; margin-bottom: 15px">
+            <img class="card-img-top" src="https://c8.alamy.com/comp/KERXEJ/destination-board-at-airport-KERXEJ.jpg" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">120+ Destinations</h4>
+                <p class="card-text">We Are WORLDWIDE.</p>
+                <button class="btn btn-primary"  asp-area="Identity" asp-page="/Account/Login">FLY NOW</button>
+            </div>
+        </div>
+        <div class="card" style="width:300px; margin-right: 15px; margin-bottom: 15px">
+            <img class="card-img-top" src="https://i.insider.com/5be48e2a48eb12111656d417?width=1100&format=jpeg&auto=webp" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">Some example text.</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>
+        <div class="card" style="width:300px; margin-bottom: 15px">
+            <img class="card-img-top" src="https://img.etimg.com/thumb/width-640,height-480,imgsize-20444,resizemode-1,msid-74568632/airlines-slash-flights-freeze-hiring-as-covid-19-outbreak-cuts-travel.jpg" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">Some example text.</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>
+    </div>
+
+    <div><img class="bg-image" src="https://clients.thewebsiteshop.ie/berkeleysolicitors/wp-content/uploads/sites/201/2019/05/planelanding.jpg" /></div>
+}
+
